@@ -30,7 +30,7 @@ const LoginForm = () => {
       setLoader('')
       if (msg === "success") {
         toast.success("request successfll.");
-        navegate("/otp");
+        navegate("/router/otp");
       } else {
         toast.error("request fail.");
       }

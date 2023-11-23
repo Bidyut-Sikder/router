@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
  
   plugins: [react()],
-  base:"/cart_project"
+  base:"/router/"
 })

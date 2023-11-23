@@ -35,7 +35,7 @@ const NavBar = () => {
         <div className="collaps navbar-collapse sticky-top" id="btn">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink to={"/"} className="nav-link">
+              <NavLink to={"/cart_project"} className="nav-link">
                 Products
               </NavLink>
             </li>

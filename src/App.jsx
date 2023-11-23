@@ -1,33 +1,41 @@
-import {useState} from "react";
-import Home from "./Pages/Home";
-import Service from "./Pages/Service";
-import About from "./Pages/About";
-import Project from "./Pages/Project";
-import Blog from "./Pages/Blog";
-import Contact from "./Pages/Contact";
-import {HashRouter, Route, BrowserRouter as Router, Routes} from "react-router-dom";
-import Navbar from "./components/Navbar";
+import React from "react";
 
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {GetToken} from "./utility/TokenHelper";
+import ProductListPage from "./Pages/ProductListPage";
+import CartListPage from "./Pages/CartListPage";
+import UserLoginPage from "./Pages/UserLoginPage";
+import OTPPage from "./Pages/OTPPage";
+import NavBar from "./components/NavBar";
 
-function App() {
-  return (
-    <>
+const App = () => {
+  if (GetToken()) {
+    return (
+      <>
+        <BrowserRouter>
      
-      <Router>
-       <Navbar />
-        <Routes>
+          <Routes>
+            <Route path="/" element={<ProductListPage />} />
+            <Route path="/cart" element={<CartListPage />} />
+          </Routes>
+        </BrowserRouter>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <BrowserRouter>
        
-          <Route path="/" element={<Home />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Router>
+          <Routes>
+            <Route path="/" element={<ProductListPage />} />
 
-    </>
-  );
-}
+            <Route path="/login" element={<UserLoginPage />} />
+            <Route path="/otp" element={<OTPPage />} />
+          </Routes>
+        </BrowserRouter>
+      </>
+    );
+  }
+};
 
 export default App;
